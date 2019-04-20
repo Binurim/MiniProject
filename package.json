@@ -1,0 +1,38 @@
+{
+  "name": "miniproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "classnames": "^2.2.6",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "gravatar": "^1.8.0",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
+    "mongoose": "^5.4.20",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "react-redux": "^7.0.2",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "shortid": "^2.2.14",
+    "validator": "^10.11.0",
+    "react": "^16.6.3"
+  },
+  "devDependencies": {}
+}
