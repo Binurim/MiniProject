@@ -30,11 +30,14 @@ router.post("/register", (req, res) => {
       var avatar = gravatar.url('req.body.username', {s: '200', r: 'pg', d: 'mm'});
 
   const newUser = new User({
-          title: req.body.title,
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
+          // title: req.body.title,
+          // firstName: req.body.firstName,
+          // lastName: req.body.lastName,
           username: req.body.username,
+          email: req.body.email,
           password: req.body.password,
+          password2: req.body.password2,
+
           avatar,
         });
   // Hash password before saving in database
@@ -62,13 +65,13 @@ router.post("/register", (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
-  const username = req.body.username;
+  const email = req.body.email;
     const password = req.body.password;
   // Find user by username
-    User.findOne({ username }).then(user => {
+    User.findOne({ email }).then(user => {
       // Check if user exists
       if (!user) {
-        return res.status(404).json({ usernamenotfound: "Username not found" });
+        return res.status(404).json({ emailnotfound: "Username not found" });
       }
   // Check password
       bcrypt.compare(password, user.password).then(isMatch => {
@@ -77,7 +80,7 @@ router.post("/register", (req, res) => {
           // Create JWT Payload
           const payload = {
             id: user.id,
-            username: user.username
+            email: user.email
           };
   // Sign token
           jwt.sign(
