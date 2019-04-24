@@ -6,6 +6,12 @@ import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
 
 class Register extends Component {
+  componentDidMount() {
+    // If logged in and user navigates to Register page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
   constructor() {
     super();
     this.state = {
